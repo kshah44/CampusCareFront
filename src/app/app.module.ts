@@ -24,6 +24,7 @@ const appRoutes:Routes = [
   {path:'providerhome', component:ProviderHomeComponent},
   {path:'signupoptions', component:SignupOptionsComponent}
 
+
 ]
 
 @NgModule({
