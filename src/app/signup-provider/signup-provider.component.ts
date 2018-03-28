@@ -18,7 +18,12 @@ export class SignupProviderComponent implements OnInit {
     .subscribe(
       (data:any) => {
 
-        console.log(data);
+        if(data.userName != null){
+          this.router.navigate(['./loginprovider'])
+        }
+        else{
+          this.router.navigate(['./signupprovider'])
+        }
       }
         
 

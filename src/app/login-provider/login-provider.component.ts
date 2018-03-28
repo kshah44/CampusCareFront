@@ -26,15 +26,15 @@ export class LoginProviderComponent implements OnInit {
     this.password = password;
     console.log(username,password);
     this.httpClient.post(`https://jsonplaceholder.typicode.com/users/`,{
-      username: this.username,
+      userName: this.username,
       password: this.password
 
     })
     .subscribe(
       (data:any) => {
 
-        console.log(data.username);
-        if(data.username == this.username){
+        
+        if(data.userName != null){
           this.router.navigate(['./providerhome'])
         }
         else{

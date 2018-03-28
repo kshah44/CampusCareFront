@@ -29,8 +29,8 @@ export class LoginformComponent implements OnInit {
     this.username=username;
     this.password = password;
     console.log(username,password);
-    this.httpClient.post(`http://c37db6cc.ngrok.io/login`,{
-      username: this.username,
+    this.httpClient.post(`http://localhost:8080/login`,{
+      userName: this.username,
       password: this.password
 
     })

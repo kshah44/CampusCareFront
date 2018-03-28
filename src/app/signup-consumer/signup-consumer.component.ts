@@ -19,7 +19,12 @@ export class SignupConsumerComponent implements OnInit {
     .subscribe(
       (data:any) => {
 
-        console.log(data);
+        if(data.userName != null){
+          this.router.navigate(['./loginconsumer'])
+        }
+        else{
+          this.router.navigate(['./signupconsumer'])
+        }
       }
         
 
