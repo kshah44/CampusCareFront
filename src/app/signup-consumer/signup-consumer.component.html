@@ -17,10 +17,10 @@
 
             <div *ngIf="username.touched" class="alert alert-danger">
               <div *ngIf = "username.errors?.required">
-                  Name is required!
+                  Username is required!
               </div>
               <div *ngIf = "username.errors?.pattern">
-                  Name is Invalid!
+                  Username is Invalid!
               </div>
 
             </div>
@@ -73,7 +73,7 @@
                 class="form-control"
                 ngModel
                 required
-                pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$">
+                pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
                 <div *ngIf="email.touched" class="alert alert-danger">
                     
                     <div *ngIf="email.errors?.required">
@@ -110,7 +110,7 @@
 
               <button type="submit" class="btn btn-success"[disabled] = "frm.invalid">Create Account</button>
               <small routerLink='/loginconsumer'><a>| Consumer Login |</a></small> 
-              <small routerLink='/loginprovider'><a> Login as a Provider |</a></small>
+              <small routerLink='/loginprovider'><a> Provider Login |</a></small>
               <small routerLink='/signupprovider'><a> Signup as a provider</a></small>
         
         </form>

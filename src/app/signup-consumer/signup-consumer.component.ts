@@ -14,12 +14,12 @@ export class SignupConsumerComponent implements OnInit {
 
   createAccount(frm){
 
-    console.log(frm.value.username);
-    this.httpClient.post(`https://jsonplaceholder.typicode.com/users/`,frm.value)
+    console.log(frm.value);
+    this.httpClient.post(`http://localhost:8080/createconsumer`,frm.value)
     .subscribe(
       (data:any) => {
 
-        if(data.userName != null){
+        if(data.userName != "null"){
           this.router.navigate(['./loginconsumer'])
         }
         else{

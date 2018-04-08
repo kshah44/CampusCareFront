@@ -13,6 +13,8 @@ import { ProviderHomeComponent } from './provider-home/provider-home.component';
 import { SignupProviderComponent } from './signup-provider/signup-provider.component';
 import { ConsumerHomepageComponent } from './consumer-homepage/consumer-homepage.component';
 import { SignupOptionsComponent } from './signup-options/signup-options.component';
+import { TestProviderComponent } from './test-provider/test-provider.component';
+import { TemplateComponent } from './template/template.component';
 
 const appRoutes:Routes = [
   {path:'loginconsumer', component:LoginformComponent},
@@ -22,8 +24,8 @@ const appRoutes:Routes = [
   {path:'signupprovider', component:SignupProviderComponent},
   {path:'consumerhome', component:ConsumerHomepageComponent},
   {path:'providerhome', component:ProviderHomeComponent},
-  {path:'signupoptions', component:SignupOptionsComponent}
-
+  {path:'signupoptions', component:SignupOptionsComponent},
+  {path:'testprovider', component:TestProviderComponent}
 
 ]
 
@@ -36,7 +38,9 @@ const appRoutes:Routes = [
     ProviderHomeComponent,
     SignupProviderComponent,
     ConsumerHomepageComponent,
-    SignupOptionsComponent
+    SignupOptionsComponent,
+    TestProviderComponent,
+    TemplateComponent
   ],
   imports: [
     BrowserModule,

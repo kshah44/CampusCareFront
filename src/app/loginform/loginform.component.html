@@ -3,6 +3,9 @@
 
   <div class="jumbotron">
       <h3>Login to CampusCare</h3>
+      <div *ngIf = "formValid;" class="alert alert-danger">
+        Invalid username or password !
+    </div>
       <form #frm="ngForm" > 
           <div class="form-group">
             <label>Username</label>
@@ -13,15 +16,15 @@
               #username="ngModel"
               ngModel
               required
-              pattern="^[a-zA-Z0-9]([._](?![._])|[a-zA-Z0-9]){6,18}[a-zA-Z0-9]$"
+              pattern="^[a-zA-Z0-9]([._](?![._])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$"
               >
               <div *ngIf="username.touched" class="alert alert-danger">
                 <div *ngIf = "username.errors?.required">
                     Username is required!
                 </div>
-                <div *ngIf = "username.errors?.pattern">
+                <!-- <div *ngIf = "username.errors?.pattern">
                     Username is Invalid!
-                </div>
+                </div> -->
   
               </div>
             
@@ -38,6 +41,7 @@
               <small><a routerLink='/signupoptions'> Signup for CampusCare</a></small>
               
           </div>
+
           
               
           

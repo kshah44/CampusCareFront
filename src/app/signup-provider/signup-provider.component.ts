@@ -13,12 +13,12 @@ export class SignupProviderComponent implements OnInit {
 
   createAccount(frm){
 
-    console.log(frm.value.username);
-    this.httpClient.post(`https://jsonplaceholder.typicode.com/users/`,frm.value)
+    console.log(frm);
+    this.httpClient.post(`http://localhost:8080/createprovider`,frm.value)
     .subscribe(
       (data:any) => {
 
-        if(data.userName != null){
+        if(data.userName != "null"){
           this.router.navigate(['./loginprovider'])
         }
         else{

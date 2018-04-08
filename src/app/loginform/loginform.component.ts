@@ -9,6 +9,7 @@ import {Router} from '@angular/router'
   styleUrls: ['./loginform.component.css']
 })
 export class LoginformComponent implements OnInit {
+  
 
   constructor(private httpClient:HttpClient,private router:Router) { 
    
@@ -18,9 +19,11 @@ export class LoginformComponent implements OnInit {
   
   username:string = '';
   password:string;
-  formValid:boolean = true;
+  formValid:boolean = false;
 
   ngOnInit() {
+    
+    sessionStorage.clear();
   }
 
 
@@ -29,7 +32,7 @@ export class LoginformComponent implements OnInit {
     this.username=username;
     this.password = password;
     console.log(username,password);
-    this.httpClient.post(`http://localhost:8080/login`,{
+    this.httpClient.post(`http://localhost:8080/loginconsumer`,{
       userName: this.username,
       password: this.password
 
@@ -37,19 +40,24 @@ export class LoginformComponent implements OnInit {
     .subscribe(
       (data:any) => {
 
-        console.log(data);
-        if(data.username != null){
-          this.router.navigate(['./consumerhome'])
+        
+
+        console.log(data.userName);
+      
+        if(data.userName == null){
+          this.formValid = true;
+          console.log("null object recieved")
+          sessionStorage.setItem("error","true")
+          this.router.navigate(['./loginconsumer'])
         }
         else{
-          this.formValid = false;
-          
-          this.router.navigate(['./loginconsumer'])
+          sessionStorage.setItem("consumer",JSON.stringify(data));
+          this.router.navigate(['./consumerhome']);
         }
       }
 
     )
-
+   
     
 
     //this.router.navigate(['./signupconsumer'])

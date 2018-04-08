@@ -15,8 +15,10 @@ export class LoginProviderComponent implements OnInit {
   username:string = '';
   password:string;
   id:number;
+  formValid:boolean = false;
 
   ngOnInit() {
+    sessionStorage.clear();
   }
 
 
@@ -25,20 +27,28 @@ export class LoginProviderComponent implements OnInit {
     this.username=username;
     this.password = password;
     console.log(username,password);
-    this.httpClient.post(`https://jsonplaceholder.typicode.com/users/`,{
+    this.httpClient.post(`http://localhost:8080/loginprovider`,{
       userName: this.username,
-      password: this.password
+      password: this.password,
+      
 
     })
     .subscribe(
       (data:any) => {
 
         
+
+        console.log(data.userName);
+      
         if(data.userName != null){
+          sessionStorage.setItem("provider",JSON.stringify(data));
           this.router.navigate(['./providerhome'])
         }
         else{
-          this.router.navigate(['./loginconsumer'])
+          this.formValid = true;
+          console.log("null object recieved")
+          sessionStorage.setItem("error","true")
+          this.router.navigate(['./loginprovider'])
         }
       }
 
